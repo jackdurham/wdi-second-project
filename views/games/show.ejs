@@ -2,3 +2,14 @@
 <p class="text-center"><%= game.review%></p>
 <h3 class="text-center"><%= game.review%></h3>
 <img class="rounded float-left border border-dark rounded" src="<%= game.image %>" alt="Box Art">
+
+<div class="btn-group" role="group" aria-label="Basic example">
+
+<a href="/games/<%= game.id %>/edit"><button class="btn btn-info btn-lg btn-secondary">Edit</button></a>
+
+  <form action="/games/<%= game.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="btn btn-info btn-lg btn-secondary" name="button">Delete</button>
+  </form>
+
+</div>

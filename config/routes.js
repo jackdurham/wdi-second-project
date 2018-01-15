@@ -1,5 +1,5 @@
-const router = express.Router();
 const express = require('express');
+const router = express.Router();
 const Game = require('..controllers/games');
 const statics = require('..controllers/static');
 const registrations = ('..controllers/registrations');

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "postinstall": "gulp build",
     "seed": "node db/seeds"
   },
@@ -17,10 +17,14 @@
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "ejs": "^2.5.6",
-    "express": "^4.14.1",
+    "express": "^4.16.2",
     "express-ejs-layouts": "^2.2.0",
+    "flash": "^1.1.0",
+    "method-override": "^2.3.10",
     "mongoose": "^4.13.9",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "session": "^0.1.0",
+    "sessions": "^0.0.2-7"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
