@@ -1,0 +1,31 @@
+<h1>Edit</h1>
+
+<div class="#">
+  <form class="six colums" action="/games/<%= game.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" value="<%= game.name %>" id="name">
+    </div>
+
+    <div>
+      <label for="review">Review</label>
+      <textarea name="review" class="u-fullwidth"><%= game.review %></textarea>
+    </div>
+
+    <div>
+      <label for="rating">Rating</label>
+      <input type="text" name="rating" value="<%= game.rating %>" id="rating">
+    </div>
+
+    <div>
+      <label for="image">Box Art</label>
+      <input type="image" name="image" value="<%= game.image %>" id="image">
+    </div>
+
+    <button>Edit Game</button>
+
+  </form>
+
+</div>
