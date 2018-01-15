@@ -13,7 +13,7 @@ userSchema.virtual('passwordConfirmation')
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  is(this.isModifed('password') && this._passwordConfirmation !== this.password) {
+  if(this.isModifed('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'does not match');
   }
   next();
@@ -26,7 +26,7 @@ userSchema.pre('save', function hashPassword(next) {
 });
 
 userSchema.methods.validatePassword = function validatePassword(password) {
-  return bycrypt.compareSync(password, this.password);
+  return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);
