@@ -3,17 +3,20 @@ const morgan         = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
 const routes         = require('./config/routes');
 const mongoose       = require('mongoose');
-mongoose.Promise     = require('bluebird');
 const { port, env, dbURI } = require('./config/environment');
+mongoose.Promise     = require('bluebird');
+mongoose.createConnection(dbURI);
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('express-flash');
 const User = require('./models/user');
 const app = express();
+if(env === 'devlopment') app.use(morgan('dev'));
 
-const databaseURL = 'mongodb://localhost/restful-routing-hw';
-mongoose.connect(databaseURL);
+
+
+mongoose.connect(dbURI, { useMongoClient: true });
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
@@ -48,6 +51,8 @@ app.use((req, res, next) => {
           res.redirect('/');
         });
       }
+
+      req.user = user;
       res.locals.user = user;
       res.locals.isLoggedIn = true;
       next();
@@ -57,8 +62,3 @@ app.use((req, res, next) => {
 app.use(routes);
 
 app.listen(port, () => console.log(`Express is listening to port ${port}`));
-
-
-mongoose.connect(dbURI);
-
-if(env === 'devlopment') app.use(morgan('dev'));

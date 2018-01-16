@@ -13,13 +13,13 @@ userSchema.virtual('passwordConfirmation')
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(this.isModifed('password') && this._passwordConfirmation !== this.password) {
+  if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'does not match');
   }
   next();
 });
 userSchema.pre('save', function hashPassword(next) {
-  if(this.isModifed('password')) {
+  if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
   }
   next();

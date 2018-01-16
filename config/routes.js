@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Game = require('../controllers/games');
+const game = require('../controllers/games');
 const statics = require('../controllers/static');
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
@@ -32,15 +32,21 @@ router.route('/secret')
   .get(secureRoute, statics.secret);
 
 router.route('/games')
-  .get(Game.index)
-  .post(Game.create);
+  .get(game.index)
+  .post(game.create);
 router.route('/games/new')
-  .get(secureRoute, Game.new);
+  .get(secureRoute, game.new);
 router.route('/games/:id')
-  .get(Game.show)
-  .put(Game.update)
-  .delete(Game.delete);
-router.route('/games:id/edit')
-  .get(secureRoute, Game.edit);
+  .get(game.show)
+  .put(game.update)
+  .delete(game.delete);
+router.route('/games/:id/edit')
+  .get(secureRoute, game.edit);
+
+router.route('/games/:id/comments')
+  .post(game.createComment);
+
+router.route('/games/:id/comments/:commentId')
+  .delete(game.deleteComment);
 
 module.exports = router;
