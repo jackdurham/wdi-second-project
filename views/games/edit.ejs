@@ -1,25 +1,26 @@
 <h1>Edit</h1>
 
 <div class="row">
+  <div class="col-md-6 offset-md-3">
   <form class="six colums" action="/games/<%= game.id %>" method="post">
     <input type="hidden" name="_method" value="put">
 
-    <div>
+    <div class="form-group">
       <label for="name">Name</label>
       <input type="text" name="name" value="<%= game.name %>" id="name">
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="review">Review</label>
       <textarea name="review" class="u-fullwidth"><%= game.review %></textarea>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="rating">Rating</label>
       <input type="text" name="rating" value="<%= game.rating %>" id="rating">
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="image">Box Art</label>
       <input type="image" name="image" value="<%= game.image %>" id="image">
     </div>
@@ -28,5 +29,5 @@
 
 
   </form>
-
+  </div>
 </div>

@@ -3,6 +3,7 @@
 <h3 class="text-right"><%= game.rating%></h3>
 <img src="<%= game.image %>" alt="Box Art">
 
+
 <% if(locals.isLoggedIn && game.belongsTo(user)) { %>
   <a href="/games/<%= game.id %>/edit"><button>Edit</button></a>
   <form method="POST" action="/games/<%= game.id %>">
