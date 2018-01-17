@@ -19,7 +19,7 @@ function gamesNew(req, res){
 function gamesShow(req, res){
   Game
     .findById(req.params.id)
-    .populate('createdBy')
+    .populate('createdBy comments.createdBy')
     .exec()
     .then((game) => {
       if(!game) return res.status(404).send('Not found');
@@ -49,7 +49,7 @@ function gamesEdit(req, res) {
     .exec()
     .then((game) => {
       if(!game) return res.status(404).send('Not Found');
-      res.redirect('games/edit', { game });
+      res.render('games/edit', { game });
     })
     .catch((err) => {
       res.status(500).render('error', { err });

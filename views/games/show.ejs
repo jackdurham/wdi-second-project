@@ -1,40 +1,48 @@
-<h2 class="text-center"><%= game.name %></h2>
-<p class="text-right"><%= game.review%></p>
-<h3 class="text-right"><%= game.rating%></h3>
-<img src="<%= game.image %>" alt="Box Art">
+<div class="row">
+  <div class="col-6">
+    <img src="<%= game.image %>" alt="Box Art">
+  </div>
+  <div class="col-6">
+    <h2 class="text-center"><%= game.name %></h2>
+    <p class="text-right review"><%= game.review%></p>
+    <h3 class="text-right"><%= game.rating%></h3>
 
-<% if(locals.isLoggedIn && game.belongsTo(user)) { %>
+    <% if(locals.isLoggedIn && game.belongsTo(user)) { %>
 
 
-  <a href="/games/<%= game.id %>/edit" class="btn btn-info btn-lg btn-secondary">Edit</a>
+      <a href="/games/<%= game.id %>/edit" class="btn btn-info btn-lg btn-secondary">Edit</a>
 
-  <form class="form-group" action="/games/<%= game.id %>" method="post">
-  <input class="form-control" type="hidden" name="_method" value="delete">
-  <button class="btn btn-info btn-lg btn-secondary" name="button">Delete</button>
-  </form>
+      <form class="form-group" action="/games/<%= game.id %>" method="post">
+      <input class="form-control" type="hidden" name="_method" value="delete">
+      <button class="btn btn-info btn-lg btn-secondary" name="button">Delete</button>
+      </form>
 
-  <% } %>
+      <% } %>
+  </div>
+</div>
+
 
   <% game.comments.forEach((comment) => { %>
-    <small><%= comment.createdBy.username %></small>
-    <p><%= comment.content %></p>
-
+    <p><%= comment.createdBy.username%> <%= comment.content %></p>
 
     <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
       <form class="form-group" method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
-      <input class="form-control" type="hidden" name="_method" value="DELETE">
-      <button class="btn btn-secondary">Delete comment</button>
+        <input class="form-control" type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-secondary">Delete comment</button>
       </form>
-      <% } %>
-      <% }) %>
+    <% } %>
+  <% }) %>
 
 
-      <% if(locals.isLoggedIn) { %>
-        <section>
-        <h4>Leave a comment</h4>
-        <form class="form-group" method="POST" action="/games/<%= game.id %>/comments">
+  <% if(locals.isLoggedIn) { %>
+    <section>
+      <h4>Leave a comment</h4>
+      <form class="form-group" method="POST" action="/games/<%= game.id %>/comments">
         <textarea class="form-control" name="content" id="content" placeholder="Comment"></textarea>
         <button class="button">Leave a comment</button>
-        </form>
-        </section>
-        <% } %>
+      </form>
+    </section>
+  <% } %>
+
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= game.videoId %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

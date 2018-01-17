@@ -8,7 +8,7 @@ const commntSchema = new mongoose.Schema({
 });
 
 commntSchema.methods.belongsTo = function commentBelongsTo(user) {
-  return this.createdBy.id === user._id;
+  return this.createdBy.id.toString() === user._id.toString();
 };
 
 const gameSchema = new mongoose.Schema({
@@ -16,6 +16,7 @@ const gameSchema = new mongoose.Schema({
   review: { type: String, required: true },
   rating: { type: String, required: true },
   image: { type: String, required: true},
+  videoId: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [ commntSchema ]
 });
