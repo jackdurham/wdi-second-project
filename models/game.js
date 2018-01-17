@@ -21,7 +21,7 @@ const gameSchema = new mongoose.Schema({
 });
 
 gameSchema.methods.belongsTo = function belongsTo(user) {
-  return this.createdBy.id === user._id;
+  return this.createdBy.id.toString() === user._id.toString();
 };
 
 module.exports = mongoose.model('Game', gameSchema);

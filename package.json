@@ -28,6 +28,7 @@
     "method-override": "^2.3.10",
     "mongoose": "^4.13.9",
     "morgan": "^1.8.1",
+    "sass": "^1.0.0-beta.4",
     "session": "^0.1.0",
     "sessions": "^0.0.2-7"
   },

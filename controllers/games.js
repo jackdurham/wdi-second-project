@@ -46,8 +46,10 @@ function gamesCreate(req, res) {
 function gamesEdit(req, res) {
   Game
     .findById(req.params.id)
+    .exec()
     .then((game) => {
-      res.render('games/edit', { game });
+      if(!game) return res.status(404).send('Not Found');
+      res.redirect('games/edit', { game });
     })
     .catch((err) => {
       res.status(500).render('error', { err });
