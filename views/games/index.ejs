@@ -6,13 +6,16 @@
       <div class="row">
 
         <% game.forEach((game) => { %>
-          <ul class="col-lg-4">
-          <li class="col-12">
-          <a href="/games/<%= game.id %>"><h3><%= game.name %></h3>
-          <img src= "<%= game.image %>" class="img-fluid img-thumbnail" alt="<%= game.name %>"></a>
-          <p><%= game.rating %></p>
-          </li>
-          </ul>
+
+
+          <div class="card" style="width: 18rem;">
+            <a href="/games/<%= game.id %>"><img class="card-img-top" src="<%= game.image %>" alt="Card image cap"></a>
+            <div class="card-body">
+              <h3 class="card-title"><%= game.name %></h3>
+              <p class="card-text"><%= game.rating %></p>
+            </div>
+          </div>
+
           <% }); %>
 
       </div>

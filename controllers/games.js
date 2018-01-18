@@ -76,7 +76,6 @@ function gamesUpdate(req, res) {
 }
 
 function gamesDelete(req, res) {
-  console.log('oh hi ben!');
   Game
     .findById(req.params.id)
     .exec()
