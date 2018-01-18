@@ -1,41 +1,14 @@
 // import scss partials here
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+
+
 body {
-  font-family: 'Helvetica', sans-serif;
   background: #d9a7c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-
-h1 {
+  background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: black;
   text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
-}
-
-p {
-  color: black;
-  text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
-}
-
-h4 {
-  color: black;
-  text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
-}
-
-h3 {
-  color: black;
-  text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
-}
-
-h2 {
-  color: black;
-  text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
-}
-
-label {
-  color: black;
-  text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
+  font-family: 'Space Mono', monospace;
 }
 
 .jumbotron {
@@ -63,4 +36,8 @@ header {
 
 .card {
   margin: 40px;
+}
+
+p {
+  font-size: 14px;
 }
