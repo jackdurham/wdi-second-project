@@ -8,46 +8,55 @@
 
       <div class="btn-group game-buttons">
 
-        <form action="/games/<%= game.id %>" method="POST">
-          <input type="hidden" value="PUT" name="_method">
-          <a href="/games/<%= game.id %>/edit" class="btn btn-lg btn-outline-success">Edit</a>
-        </form>
+      <form action="/games/<%= game.id %>" method="POST">
+      <input type="hidden" value="PUT" name="_method">
+      <a href="/games/<%= game.id %>/edit" class="btn btn-lg btn-outline-success">Edit</a>
+      </form>
 
-        <form class="form-group" action="/games/<%= game.id %>" method="POST">
-          <input class="form-control" type="hidden" name="_method" value="DELETE">
-          <button class="btn-info btn-lg btn-outline-danger" name="button">Delete</button>
-        </form>
+      <form class="form-group" action="/games/<%= game.id %>" method="POST">
+      <input class="form-control" type="hidden" name="_method" value="DELETE">
+      <button class="btn-info btn-lg btn-outline-danger" name="button">Delete</button>
+      </form>
 
       </div>
 
-    <% } %>
-  </div>
-  <div class="col-6">
-    <h2 class="text-center"><%= game.name %></h2>
-
-    <% if(game.videoId) { %>
-      <div class="col-md-12 ml-auto">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= game.videoId %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
       <% } %>
-
-      <p><%= game.review%></p>
-      <h3 class="text-right"><%= game.rating%></h3>
-
-
     </div>
-  </div>
+    <div class="col-6">
+      <h2 class="text-center"><%= game.name %></h2>
+
+      <% if(game.videoId) { %>
+        <div class="col-md-12 ml-auto">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= game.videoId %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <% } %>
+
+        <p><%= game.review%></p>
+        <h3 class="text-right"><%= game.rating%></h3>
+
+
+      </div>
+    </div>
 
 
 
 
     <% game.comments.forEach((comment) => { %>
-      <p><%= comment.createdBy.username%> <%= comment.content %></p>
+
+
+      <div class="dialogbox">
+         <div class="body">
+           <span class="tip tip-left"></span>
+           <div class="message">
+             <h5><%= comment.createdBy.username%></h5> <p><%= comment.content %></p>
+           </div>
+         </div>
+       </div>
 
       <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
         <form class="form-group" method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
         <input class="form-control" type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-outline-danger">Delete comment</button>
+        <button class="btn btn-outline-danger btn-sm delete-comment">Delete comment</button>
         </form>
         <% } %>
         <% }) %>
@@ -58,7 +67,7 @@
           <h4>Leave a comment</h4>
           <form class="form-group" method="POST" action="/games/<%= game.id %>/comments">
           <textarea class="form-control" name="content" id="content" placeholder="Comment"></textarea>
-          <button class="btn btn-lg btn-outline-success">Leave a comment</button>
+          <button class="btn btn-lg btn-outline-success leave-comment">Submit</button>
           </form>
           </section>
           <% } %>

@@ -41,3 +41,53 @@ header {
 p {
   font-size: 14px;
 }
+
+.intro {
+  text-align: justify;
+}
+
+.tip {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  background: transparent;
+  border: 10px solid #FFD046;
+
+}
+
+.tip-left {
+  top: 10px;
+  left: -25px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.dialogbox .body {
+  position: relative;
+  max-width: 300px;
+  height: auto;
+  margin: 20px 10px;
+  padding: 5px;
+  background-color: #EADAA2;
+  border-radius: 3px;
+  border: 5px solid #FFD046;
+}
+
+.body .message {
+  min-height: 30px;
+  border-radius: 3px;
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 1.5;
+  color: black;
+}
+
+.leave-comment {
+  margin-top: 5px;
+}
+
+.delete-comment {
+  margin-top: -25px;
+  margin-right: 10px;
+}
