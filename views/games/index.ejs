@@ -8,8 +8,8 @@
         <% game.forEach((game) => { %>
           <ul class="col-lg-4">
           <li class="col-12">
-          <a href="/games/<%= game.id %>"><h3><%= game.name %></h3></a>
-          <img src= "<%= game.image %>" class="img-fluid img-thumbnail" alt="<%= game.name %>">
+          <a href="/games/<%= game.id %>"><h3><%= game.name %></h3>
+          <img src= "<%= game.image %>" class="img-fluid img-thumbnail" alt="<%= game.name %>"></a>
           <p><%= game.rating %></p>
           </li>
           </ul>

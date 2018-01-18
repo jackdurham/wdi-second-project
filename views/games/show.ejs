@@ -1,6 +1,26 @@
 <div class="row">
   <div class="col-6">
-    <img src="<%= game.image %>" alt="Box Art">
+    <div>
+      <img src="<%= game.image %>" alt="Box Art">
+    </div>
+
+    <% if(locals.isLoggedIn && game.belongsTo(user)) { %>
+
+      <div class="btn-group game-buttons">
+
+        <form action="/games/<%= game.id %>" method="POST">
+          <input type="hidden" value="PUT" name="_method">
+          <a href="/games/<%= game.id %>/edit" class="btn btn-lg btn-outline-success">Edit</a>
+        </form>
+
+        <form class="form-group" action="/games/<%= game.id %>" method="POST">
+          <input class="form-control" type="hidden" name="_method" value="DELETE">
+          <button class="btn-info btn-lg btn-outline-danger" name="button">Delete</button>
+        </form>
+
+      </div>
+
+    <% } %>
   </div>
   <div class="col-6">
     <h2 class="text-center"><%= game.name %></h2>
@@ -18,20 +38,7 @@
     </div>
   </div>
 
-  <% if(locals.isLoggedIn && game.belongsTo(user)) { %>
 
-    <div class="row">
-    <form action="/games/<%= game.id %>" method="POST">
-    <input type="hidden" value="PUT" name="_method">
-    <a href="/games/<%= game.id %>/edit" class="btn btn-lg btn-outline-success">Edit</a>
-
-    <form class="form-group" action="/games/<%= game.id %>" method="post">
-    <input class="form-control" type="hidden" name="_method" value="delete">
-    <button class="btn-info btn-lg btn-outline-danger" name="button">Delete</button>
-    </form>
-
-    </div>
-    <% } %>
 
 
     <% game.comments.forEach((comment) => { %>
